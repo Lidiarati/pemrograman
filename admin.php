@@ -1,3 +1,12 @@
+<?php
+ session_start();
+
+ // cek apakah yang mengakses halaman ini sudah login
+ if($_SESSION['level']==""){
+  header("location:index.php?pesan=gagal");
+ }
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -139,6 +148,8 @@
           		# code...
           include 'edit.php';
           break;
+        case 'user':
+          include 'user.php';
         default:
 		          #code...
 		      include 'home.php';

@@ -2,6 +2,15 @@
 //memasukkan file config.php
 include('koneksi.php');
 ?>
+<?php
+ session_start();
+
+ // cek apakah yang mengakses halaman ini sudah login
+ if($_SESSION['level']==""){
+  header("location:index.php?pesan=gagal");
+ }
+
+ ?>
 
 
 	<div class="container" style="margin-top:20px">

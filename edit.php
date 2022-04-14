@@ -1,4 +1,13 @@
-<?php include('config.php'); ?>
+<?php include('koneksi.php'); ?>
+<?php
+ session_start();
+
+ // cek apakah yang mengakses halaman ini sudah login
+ if($_SESSION['level']==""){
+  header("location:index.php?pesan=gagal");
+ }
+
+ ?>
 
 
 	<div class="container" style="margin-top:20px">
@@ -37,14 +46,15 @@
 			$sql = mysqli_query($koneksi, "UPDATE mahasiswa SET Nama_Mhs='$Nama_Mhs', Jenis_Kelamin='$Jenis_Kelamin', Program_Studi='$Program_Studi' WHERE Nim='$Nim'") or die(mysqli_error($koneksi));
 
 			if($sql){
-				echo '<script>alert("Berhasil menyimpan data."); document.location="index.php?page=tampil_mhs";</script>';
+				echo '<script>alert("Berhasil menyimpan data."); document.location="admin.php?page=tampil_mhs";</script>';
 			}else{
 				echo '<div class="alert alert-warning">Gagal melakukan proses edit data.</div>';
 			}
 		}
 		?>
 
-		<form action="index.php?page=edit_mhs&Nim=<?php echo $Nim; ?>" method="post">
+		<form action="admin.php?page=edit_mhs&Nim=<?php echo $Nim; ?>" method="post">
+		<fieldset>
 			<div class="item form-group">
 				<label class="col-form-label col-md-3 col-sm-3 label-align">Nim</label>
 				<div class="col-md-6 col-sm-6">
@@ -77,13 +87,14 @@
 						<option value="">Pilih Program Studi</option>
 						<option value="Teknik Informatika" <?php if($data['Program_Studi'] == 'Teknik Informatika'){ echo 'selected'; } ?>>Teknik Informatika</option>
 						<option value="Teknik Sipil" <?php if($data['Program_Studi'] == 'Teknik Sipil'){ echo 'selected'; } ?>>Teknik Sipil</option>
-						<option value="Teknik Kimia" <?php if($data['Program_Studi'] == 'Teknik Kimia'){ echo 'selected'; } ?>>Teknik Kimia</option>
+						<option value="Teknik Mesin" <?php if($data['Program_Studi'] == 'Teknik Mesin'){ echo 'selected'; } ?>>Teknik Mesin</option>
 						<option value="Teknik Elektro" <?php if($data['Program_Studi'] == 'Teknik Elektro'){ echo 'selected'; } ?>>Teknik Elektro</option>
 						<option value="Akuntansi" <?php if($data['Program_Studi'] == 'Akuntansi'){ echo 'selected'; } ?>>Akuntansi</option>
 						<option value="Manajemen" <?php if($data['Program_Studi'] == 'Manajemen'){ echo 'selected'; } ?>>Manajemen</option>
 						<option value="Farmasi" <?php if($data['Program_Studi'] == 'Farmasi'){ echo 'selected'; } ?>>Farmasi</option>
 						<option value="Hukum" <?php if($data['Program_Studi'] == 'Hukum'){ echo 'selected'; } ?>>Hukum</option>
-						<option value="Kedokteran" <?php if($data['Program_Studi'] == 'Kedokteran'){ echo 'selected'; } ?>>Kedokteran</option>
+						<option value="Psikologi" <?php if($data['Program_Studi'] == 'Psikologi'){ echo 'selected'; } ?>>Psikologi</option>
+		 
 					</select>
 				</div>
 			</div>
@@ -93,5 +104,6 @@
 					<a href="index.php?page=tampil_mhs" class="btn btn-warning">Kembali</a>
 				</div>
 			</div>
+	</fieldset>
 		</form>
 	</div>
