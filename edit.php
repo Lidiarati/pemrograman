@@ -46,14 +46,14 @@
 			$sql = mysqli_query($koneksi, "UPDATE mahasiswa SET Nama_Mhs='$Nama_Mhs', Jenis_Kelamin='$Jenis_Kelamin', Program_Studi='$Program_Studi' WHERE Nim='$Nim'") or die(mysqli_error($koneksi));
 
 			if($sql){
-				echo '<script>alert("Berhasil menyimpan data."); document.location="admin.php?page=tampil_mhs";</script>';
+				echo '<script>alert("Berhasil menyimpan data."); document.location="admin1.php?page=tampil";</script>';
 			}else{
 				echo '<div class="alert alert-warning">Gagal melakukan proses edit data.</div>';
 			}
 		}
 		?>
 
-		<form action="admin.php?page=edit_mhs&Nim=<?php echo $Nim; ?>" method="post">
+		<form action="admin1.php?page=edit_mhs&Nim=<?php echo $Nim; ?>" method="post">
 		<fieldset>
 			<div class="item form-group">
 				<label class="col-form-label col-md-3 col-sm-3 label-align">Nim</label>

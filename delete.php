@@ -1,6 +1,6 @@
 <?php
 //include file config.php
-include('config.php');
+include('koneksi.php');
 
 //jika benar mendapatkan GET id dari URL
 if(isset($_GET['Nim'])){
@@ -15,15 +15,15 @@ if(isset($_GET['Nim'])){
 		//query ke database DELETE untuk menghapus data dengan kondisi id=$id
 		$del = mysqli_query($koneksi, "DELETE FROM mahasiswa WHERE Nim='$Nim'") or die(mysqli_error($koneksi));
 		if($del){
-			echo '<script>alert("Berhasil menghapus data."); document.location="index.php?page=tampil_mhs";</script>';
+			echo '<script>alert("Berhasil menghapus data."); document.location="admin1.php?page=tampil";</script>';
 		}else{
-			echo '<script>alert("Gagal menghapus data."); document.location="index.php?page=tampil_mhs";</script>';
+			echo '<script>alert("Gagal menghapus data."); document.location="iadmin1.php?page=tampil";</script>';
 		}
 	}else{
-		echo '<script>alert("ID tidak ditemukan di database."); document.location="index.php?page=tampil_mhs";</script>';
+		echo '<script>alert("ID tidak ditemukan di database."); document.location="admin1.php?page=tampil";</script>';
 	}
 }else{
-	echo '<script>alert("ID tidak ditemukan di database."); document.location="index.php?page=tampil_mhs";</script>';
+	echo '<script>alert("ID tidak ditemukan di database."); document.location="admin1.php?page=tampil";</script>';
 }
 
 ?>

@@ -15,7 +15,7 @@
 				$sql = mysqli_query($koneksi, "INSERT INTO mahasiswa(Nim, Nama_Mhs, Jenis_Kelamin, Program_Studi) VALUES('$Nim', '$Nama_Mhs', '$Jenis_Kelamin', '$Program_Studi')") or die(mysqli_error($koneksi));
 
 				if($sql){
-					echo '<script>alert("Berhasil menambahkan data."); document.location="admin.php?page=tampil_mhs";</script>';
+					echo '<script>alert("Berhasil menambahkan data."); document.location="admin1.php?page=tampil";</script>';
 				}else{
 					echo '<div class="alert alert-warning">Gagal melakukan proses tambah data.</div>';
 				}
@@ -25,7 +25,7 @@
 		}
 		?>
 
-		<form action="admin.php?page=tambah_mhs" method="post">
+		<form action="admin1.php?page=tambah" method="post">
 			<div class="item form-group">
 				<label class="col-form-label col-md-3 col-sm-3 label-align">Nim</label>
 				<div class="col-md-6 col-sm-6 ">
